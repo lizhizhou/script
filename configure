@@ -1,0 +1,11 @@
+#/bin/sh
+#environment
+WORKINGPATH=$PWD
+INSTALLPATH=$PWD/target
+#script
+cd bash; ./configure --prefix=$INSTALLPATH  --host arm-none-linux-gnueabi; cd ..
+cd glibc-build; ../glibc/configure --prefix=$INSTALLPATH  --host arm-none-linux-gnueabi; cd ..
+cd openssl; ./Configure --prefix=--prefix=$INSTALLPATH  os/compiler:arm-none-linux-gnueabi-gcc; cd ..
+cd zlib; CC="arm-none-linux-gnueabi-gcc" AR="arm-none-linux-gnueabi-ar rc" CPP="arm-none-linux-gnueabi-gcc -E" LDSHARED="arm-none-linux-gnueabi-gcc" ./configure ; cd ..
+cd openssh; ./configure --prefix=$INSTALLPATH --host=arm-none-linux-gnueabi --with-libs --with-zlib=$WORKINGPATH/zlib --with-ssl-dir=$WORKINGPATH/openssl --disable-etc-default-login CC=arm-none-linux-gnueabi-gcc AR=arm-none-linux-gnueabi-ar; cd ..
+#cd node; CC="arm-none-linux-gnueabi-gcc" AR="arm-none-linux-gnueabi-ar rc" CPP="arm-none-linux-gnueabi-gcc -E" LDSHARED="arm-none-linux-gnueabi-gcc" ./configure --prefix=$INSTALLPATH --dest-cpu=arm --dest-os=linux --with-arm-float-abi=soft; cd ..

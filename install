@@ -1,0 +1,5 @@
+#/bin/sh
+sudo apt-get install gcc g++ linux-kernel-headers makeself eclipse eclipse-cdt build-essential kernel-package libncurses5-dev fakeroot wget bzip2 vnc4server git git-gui vsftpd openssh-server wireshark sshfs qt4-dev-tools qt4-doc qt4-qtconfig qt4-demos qt4-designer qtcreator  freemat gawk zlib1g-dev expect
+sudo mv /usr/bin/{mawk,mawk.orig}
+sudo cp /usr/bin/{gawk,mawk}
+echo 'export PATH="$PATH:'$PWD'/gcc/bin"' >> ~/.bashrc && . ~/.bashrc
