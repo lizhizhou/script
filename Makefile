@@ -1,4 +1,6 @@
-all: linux-core build-grid-module build-grid-config build-glibc
+all: linux-core build-grid-module build-grid-config build-glibc buid-grid
+buid-grid:
+	cd grid; make;
 linux-core: 
 	cd linux; make zImage;
 build-grid-module: 
